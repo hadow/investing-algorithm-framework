@@ -93,7 +93,7 @@ class DefaultTradeOrderEvaluator(TradeOrderEvaluator):
     def _is_local_paper_order(order) -> bool:
         external_id = order.get_external_id()
         return bool(
-            external_id
+            isinstance(external_id, str)
             and external_id.startswith(_PAPER_ORDER_EXTERNAL_ID_PREFIX)
         )
 

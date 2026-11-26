@@ -17,6 +17,7 @@ from unittest.mock import patch
 
 from investing_algorithm_framework import TradingStrategy, TimeUnit, Schedule, \
     CSVOHLCVDataProvider
+from investing_algorithm_framework.domain import Position
 from tests.resources import BitvavoTestBase, BinanceTestBase
 from tests.resources.strategies_for_testing import StrategyOne
 
@@ -43,6 +44,26 @@ class TestGetPortfolio(BitvavoTestBase):
     def test_get_portfolio(self):
         portfolio = self.app.context.get_portfolio()
         self.assertEqual(Decimal(1000), portfolio.get_unallocated())
+
+    def test_valuation_skips_retired_symbols_and_prices_signed_holdings(self):
+        context = self.app.context
+        positions = [
+            Position("EUR", 1000), Position("RETIRED", 0),
+            Position("LONG", 10), Position("SHORT", -2),
+        ]
+        prices = {"LONG/EUR": 7, "SHORT/EUR": 5}
+        with patch.object(context.position_service, "get_all",
+                          return_value=positions), patch.object(
+            context.data_provider_service, "get_ticker_data",
+            side_effect=lambda symbol, **kwargs: {"bid": prices[symbol]},
+        ) as quote:
+            self.assertEqual(60, context.get_portfolio().allocated)
+            self.assertEqual(1060, context.get_portfolio_value())
+            self.assertEqual(60, context.get_allocated("BITVAVO"))
+            self.assertEqual(
+                [call.kwargs["symbol"] for call in quote.call_args_list],
+                ["LONG/EUR", "SHORT/EUR"] * 3,
+            )
 
 
 class TestGetPosition(BitvavoTestBase):

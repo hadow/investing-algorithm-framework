@@ -150,7 +150,9 @@ class _StubContext:
         return self._portfolio
 
     def get_open_trades(
-        self, target_symbol: Optional[str] = None, market: Optional[str] = None,
+        self,
+        target_symbol: Optional[str] = None,
+        market: Optional[str] = None,
     ) -> List[_StubTrade]:
         return list(self._open_trades.get(target_symbol, []))
 
@@ -456,6 +458,22 @@ class TestResolveConflictsPhase(TestCase):
 # SizePositionsPhase
 # --------------------------------------------------------------------- #
 class TestSizePositionsPhase(TestCase):
+
+    def test_signal_metadata_survives_sizing_on_every_side(self):
+        strategy = _StubStrategy(
+            symbols=["BTC"],
+            position_sizes={"BTC": _StubPositionSize(1000)},
+            positions={"BTC": _StubPosition(amount=4, cost=400)},
+            scaling_rules={"BTC": _StubScalingRule()},
+        )
+        context = _StubContext(open_trades={
+            "BTC": [_StubTrade(2, is_short=True)],
+        })
+        for side in SignalSide:
+            with self.subTest(side=side):
+                signal = Signal("BTC", side, metadata={"risk_exit": True})
+                out = self._size(strategy, context, [signal])
+                self.assertEqual(out[0].extra_metadata, {"risk_exit": True})
 
     def _size(self, strategy, context, signals):
         state = _make_state(strategy, context)

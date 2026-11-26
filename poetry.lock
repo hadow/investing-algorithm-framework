@@ -2471,6 +2471,66 @@ nearley = ["js2py"]
 regex = ["regex"]
 
 [[package]]
+name = "longbridge"
+version = "5.3.0"
+description = "A Python library for Longbridge Open API"
+optional = true
+python-versions = ">=3.8"
+groups = ["main"]
+markers = "extra == \"longbridge\" or extra == \"all\""
+files = [
+    {file = "longbridge-5.3.0-cp310-cp310-macosx_10_12_x86_64.whl", hash = "sha256:19733ea0314c9ff837f64e6aa5409cdc0073c866f6e8ef9da707ad01be39c735"},
+    {file = "longbridge-5.3.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:6f8350f833af6bfffd4a6251d0807a2d96d88ca96051f5d313aa44486e4ea6d9"},
+    {file = "longbridge-5.3.0-cp310-cp310-manylinux_2_28_aarch64.whl", hash = "sha256:620cfcf0a8c8252399c619a5a914894eb4b0e01214e453567c9d3e773fa4f2cb"},
+    {file = "longbridge-5.3.0-cp310-cp310-manylinux_2_28_x86_64.whl", hash = "sha256:ed6f6a441ad67fc5cfa3f75502b8cf2d00c1f38b4a9f8b5aeb96e7a0bdcd3c29"},
+    {file = "longbridge-5.3.0-cp310-cp310-musllinux_1_2_aarch64.whl", hash = "sha256:b241c22bf09e50d1333a14ff6fb1d2e7c1ce48d35cc39229994fd85fb056194c"},
+    {file = "longbridge-5.3.0-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:256a32992133a88d9cc8d10032d6f55e4273d0aacc76b4dd7f1418754bcb25de"},
+    {file = "longbridge-5.3.0-cp310-cp310-win_amd64.whl", hash = "sha256:506a96444a10ce153095a0933d6f7f0d05b9f93f4c76cbf783472c1611d0e1df"},
+    {file = "longbridge-5.3.0-cp311-cp311-macosx_10_12_x86_64.whl", hash = "sha256:1313c944276eb34788b73d4ad4618f9d20cad62268804b14eb9559a2661f249a"},
+    {file = "longbridge-5.3.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:5221c3dc5855371a83d65a792482cac1f158cc8f97adb99f21450a881b0d7ef3"},
+    {file = "longbridge-5.3.0-cp311-cp311-manylinux_2_28_aarch64.whl", hash = "sha256:3329430b3d82d563b1beaee85f953d2636dbcceecacbc573eb6d31593edfa6c2"},
+    {file = "longbridge-5.3.0-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:8bbf8c88727e5afe2801cb64932b3d9234b69f8bb178e8e457b9ad06a2cdc4fa"},
+    {file = "longbridge-5.3.0-cp311-cp311-musllinux_1_2_aarch64.whl", hash = "sha256:f4ff35e911fe15dcb193a1d3a4569b1c9f67201a6ac3e5944b388e0e67fe3872"},
+    {file = "longbridge-5.3.0-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:f6cbb464ccd3498daf4b6c8c7d2fd6cfc395775da135e3756c1a46cdba0e5b47"},
+    {file = "longbridge-5.3.0-cp311-cp311-win_amd64.whl", hash = "sha256:4a261b27fed2aa710e9953a6b751cb97b7cd9ad1d77d3bd82ba22d6cae4d4848"},
+    {file = "longbridge-5.3.0-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:30b3ab53dde07588d4aaa128dc63ad69c47145606d9fbca7832ed68f3c629c1a"},
+    {file = "longbridge-5.3.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:e15d6e29efe840835c4d2c6ed638b4a6eb41516d7abdbe10496768777e2afd89"},
+    {file = "longbridge-5.3.0-cp312-cp312-manylinux_2_28_aarch64.whl", hash = "sha256:4943cf95e46974102261b946388a78b2a71dce875f85a46aee7a6a03c734f173"},
+    {file = "longbridge-5.3.0-cp312-cp312-manylinux_2_28_x86_64.whl", hash = "sha256:a52792597a11a24abce7e911e60986b7b51084b3e96eb34ccd0bd6011955b5b4"},
+    {file = "longbridge-5.3.0-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:1b5f4f73bc887b81428c7a125b7c04d67522a030e82ea0b0baba5647e39700c6"},
+    {file = "longbridge-5.3.0-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:4d6d1813270c56d50764b708d49d87e73056b4cc3b5d2985996e08b90b2581c6"},
+    {file = "longbridge-5.3.0-cp312-cp312-win_amd64.whl", hash = "sha256:372d17d5d3ba684ab86a2bba10f3ba8bbe6ad054208ec1b0ef0a9cd71cd82208"},
+    {file = "longbridge-5.3.0-cp313-cp313-macosx_10_12_x86_64.whl", hash = "sha256:ba6cebfbaf7d0481fcbecc66b110eeb1750b52e60f1dc5ae9172c357b11a5504"},
+    {file = "longbridge-5.3.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:63ff15f26b7641ca3f2aae073928ecf3d0679e09e3c13a8b33b103d351c91691"},
+    {file = "longbridge-5.3.0-cp313-cp313-manylinux_2_28_aarch64.whl", hash = "sha256:5efbaa005e4e7993d62df514c7b1b2e9b646248a529021999fe664fa0685efaf"},
+    {file = "longbridge-5.3.0-cp313-cp313-manylinux_2_28_x86_64.whl", hash = "sha256:c2e6b118965373984fd8719c7de18200e590711370b2338ad324c25d8789c92c"},
+    {file = "longbridge-5.3.0-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:168e171ae529894fa04ba7f87e63e8f57f24b84a14d74b52ac7a133f3c6e347f"},
+    {file = "longbridge-5.3.0-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:251f688526d20763e599499365de91e1e04933f6be5a79ffc70e769a94e6b624"},
+    {file = "longbridge-5.3.0-cp313-cp313-win_amd64.whl", hash = "sha256:abf75715d931bee3b566f09a448c7a0bf717655999858b0d61fc9a063158b64a"},
+    {file = "longbridge-5.3.0-cp314-cp314-macosx_10_12_x86_64.whl", hash = "sha256:af6b682c7595522a8df19b4aded86c23d894ebc5e3cac8f8286dc2129190aba7"},
+    {file = "longbridge-5.3.0-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:1c5b43a71971ecebaea4afd1e4434eb443ca0a7b77b6f3e877980dd60e9e8ad0"},
+    {file = "longbridge-5.3.0-cp314-cp314-manylinux_2_28_aarch64.whl", hash = "sha256:96e176cd765b9a5d9b0cd90bc2e4e735186a7fb4fc48d28475bd7de2ee28be45"},
+    {file = "longbridge-5.3.0-cp314-cp314-manylinux_2_28_x86_64.whl", hash = "sha256:fd4dae14350c8947db6b8f9f6d87acc977789df7364d1ca1ef278bf5c8eff08e"},
+    {file = "longbridge-5.3.0-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:93de97e7ee3f60feb2518010ae409b225aee8253c2405a0659d82e5cde533010"},
+    {file = "longbridge-5.3.0-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:2ed35fb62b68d3b13c3dffb103e7a5aaf84ef2ba37ab3f43586d4a8f83838cda"},
+    {file = "longbridge-5.3.0-cp314-cp314-win_amd64.whl", hash = "sha256:dcf3f5d4caa9e626c50d2ab666756358229ccb435cdd19da5c13870123fd5a78"},
+    {file = "longbridge-5.3.0-cp38-cp38-macosx_10_12_x86_64.whl", hash = "sha256:2e7ba4d764a7ac78c38819ca2283e952e4f0f07fbb37cd7563aa1b0f1fdfebdc"},
+    {file = "longbridge-5.3.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:ce094e875538afed3889d5268d582a77cb046a65af00979968d56617cbf42722"},
+    {file = "longbridge-5.3.0-cp38-cp38-manylinux_2_28_aarch64.whl", hash = "sha256:2cc7640f69980b2449f0f7b2ad9a5666939ddc819b3364c4068677c94af5f615"},
+    {file = "longbridge-5.3.0-cp38-cp38-manylinux_2_28_x86_64.whl", hash = "sha256:4e9bf99243e419967ab4794e172e1058e2d381f148c9cae3d8be7428987c36c8"},
+    {file = "longbridge-5.3.0-cp38-cp38-musllinux_1_2_aarch64.whl", hash = "sha256:bebee70126e59ef1f6667320176df799b54cc470963e155434dddd337cd4314e"},
+    {file = "longbridge-5.3.0-cp38-cp38-musllinux_1_2_x86_64.whl", hash = "sha256:b0b0eddc5134770689bb40e8e28059f3a8ef0db1ac7b3a45ae3191f690dfce5d"},
+    {file = "longbridge-5.3.0-cp38-cp38-win_amd64.whl", hash = "sha256:e73e1b1ee48232faa5388231293eae58fb951c8eaab68655cca6611aa16dc78f"},
+    {file = "longbridge-5.3.0-cp39-cp39-macosx_10_12_x86_64.whl", hash = "sha256:40cdb7a4e751fdc2327ab2a916dfc812fbb1f2a0b4dc0909ff612112bb971800"},
+    {file = "longbridge-5.3.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:c0d07233c782f590e4aa1984331add40a05eb8ee0d3383f32c197d3241900764"},
+    {file = "longbridge-5.3.0-cp39-cp39-manylinux_2_28_aarch64.whl", hash = "sha256:6f080a46de55bb7fd84560fa88a96d9a10c8d212a1d549f2392a5f6a178252ce"},
+    {file = "longbridge-5.3.0-cp39-cp39-manylinux_2_28_x86_64.whl", hash = "sha256:56853a4098bb4bf857a8e53afd8bdef0e1c71731f2ddb43f83a18e2f2a9eb369"},
+    {file = "longbridge-5.3.0-cp39-cp39-musllinux_1_2_aarch64.whl", hash = "sha256:393d71e84f397992be6d56e80cdca8ff630db27681a6bf7ef69d5f23d6571aaa"},
+    {file = "longbridge-5.3.0-cp39-cp39-musllinux_1_2_x86_64.whl", hash = "sha256:76bcdb4cb08714a844b8626ec75638ff1c98cf124a7887c3277025ac416b1cd5"},
+    {file = "longbridge-5.3.0-cp39-cp39-win_amd64.whl", hash = "sha256:26e15488c9983d0f9dc78e92f7deac337be00a107006f82dfe215321e7521984"},
+]
+
+[[package]]
 name = "markdown-it-py"
 version = "4.0.0"
 description = "Python port of markdown-it. Markdown parsing, done right!"
@@ -5910,10 +5970,11 @@ files = [
 cffi = ["cffi (>=1.17,<2.0) ; platform_python_implementation != \"PyPy\" and python_version < \"3.14\"", "cffi (>=2.0.0b0) ; platform_python_implementation != \"PyPy\" and python_version >= \"3.14\""]
 
 [extras]
-all = ["alpha_vantage", "azure-identity", "azure-mgmt-resource", "azure-mgmt-storage", "azure-mgmt-web", "azure-storage-blob", "boto3", "ipython", "polygon-api-client", "yfinance"]
+all = ["alpha_vantage", "azure-identity", "azure-mgmt-resource", "azure-mgmt-storage", "azure-mgmt-web", "azure-storage-blob", "boto3", "ipython", "longbridge", "polygon-api-client", "yfinance"]
 alpha-vantage = ["alpha_vantage"]
 aws = ["boto3"]
 azure = ["azure-identity", "azure-mgmt-resource", "azure-mgmt-storage", "azure-mgmt-web", "azure-storage-blob"]
+longbridge = ["longbridge"]
 notebook = ["ipython"]
 polygon = ["polygon-api-client"]
 yahoo = ["yfinance"]
@@ -5921,4 +5982,4 @@ yahoo = ["yfinance"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "b25cd46e6fa77212adecd0260d723e59d3cb281f81625a3d4866d571398cb478"
+content-hash = "cecf7282eec77a4c4f90b4296ba1b370929a2293e959b9fcd4d936054408c951"

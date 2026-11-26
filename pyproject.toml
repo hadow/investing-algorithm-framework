@@ -25,6 +25,7 @@ tabulate = ">=0.9.0"
 polars = { version = ">=0.20.10", extras = ["numpy", "pandas"] }
 python-dotenv = "^1.0.1"
 yfinance = {version = "^0.2.61", optional = true}
+longbridge = {version = ">=5.3.0,<6.0.0", optional = true}
 alpha_vantage = {version = "^3.0.0", optional = true}
 polygon-api-client = {version = "^1.14.0", optional = true}
 finterion-charts = "1.4.0"
@@ -42,12 +43,13 @@ psutil = ">=5.9.0"
 
 [tool.poetry.extras]
 yahoo = ["yfinance"]
+longbridge = ["longbridge"]
 alpha_vantage = ["alpha_vantage"]
 polygon = ["polygon-api-client"]
 aws = ["boto3"]
 azure = ["azure-storage-blob", "azure-identity", "azure-mgmt-storage", "azure-mgmt-web", "azure-mgmt-resource"]
 notebook = ["ipython"]
-all = ["yfinance", "alpha_vantage", "polygon-api-client", "boto3", "azure-storage-blob", "azure-identity", "azure-mgmt-storage", "azure-mgmt-web", "azure-mgmt-resource", "ipython"]
+all = ["yfinance", "longbridge", "alpha_vantage", "polygon-api-client", "boto3", "azure-storage-blob", "azure-identity", "azure-mgmt-storage", "azure-mgmt-web", "azure-mgmt-resource", "ipython"]
 
 [tool.poetry.group.test.dependencies]
 coverage= "7.4.2"

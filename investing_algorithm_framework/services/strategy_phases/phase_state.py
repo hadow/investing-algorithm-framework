@@ -152,7 +152,9 @@ class PhaseState:
     @property
     def position_mode(self) -> PositionMode:
         try:
-            portfolio = self.context.get_portfolio()
+            # Position mode is account metadata. An exit should only need
+            # a price for its own symbol, even if another feed is unavailable.
+            portfolio = self.context.get_portfolios()[0]
             configuration = (
                 self.context.portfolio_configuration_service
                 .resolve_for_portfolio(portfolio)

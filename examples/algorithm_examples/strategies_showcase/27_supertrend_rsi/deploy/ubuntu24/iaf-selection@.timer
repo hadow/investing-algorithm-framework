@@ -1,0 +1,12 @@
+[Unit]
+Description=Select candidates before the US regular session (%i)
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 07:30:00 America/New_York
+OnCalendar=Mon..Fri *-*-* 08:30,50:00 America/New_York
+Persistent=true
+AccuracySec=30s
+Unit=iaf-selection@%i.service
+
+[Install]
+WantedBy=timers.target

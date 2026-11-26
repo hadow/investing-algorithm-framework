@@ -243,7 +243,8 @@ class TestHedgePositionModeEventState(TestCase):
         context = MagicMock()
         context.get_open_trades.return_value = []
         portfolio = MagicMock(identifier="hedge", market="binance")
-        context.get_portfolio.return_value = portfolio
+        context.get_portfolios.return_value = [portfolio]
+        context.get_portfolio.side_effect = AssertionError("unexpected valuation")
         configuration = MagicMock(position_mode=PositionMode.HEDGE)
         context.portfolio_configuration_service.resolve_for_portfolio\
             .return_value = configuration
@@ -259,6 +260,8 @@ class TestHedgePositionModeEventState(TestCase):
             bar_index=1,
         )
         ResolveConflictsPhase().run(state)
+        context.portfolio_configuration_service.resolve_for_portfolio\
+            .assert_called_with(portfolio)
         self.assertEqual(
             {SignalSide.OPEN_LONG, SignalSide.OPEN_SHORT},
             {signal.side for signal in state.approved_signals},

@@ -210,6 +210,7 @@ class SizePositionsPhase(StrategyPhase):
             quote_amount=quote_amount,
             full_symbol=full_symbol,
             order_reason=_ORDER_REASON[sig.side],
+            extra_metadata=dict(sig.metadata),
         )
 
     def _size_close_long(
@@ -237,6 +238,7 @@ class SizePositionsPhase(StrategyPhase):
             quote_amount=amount * price,
             full_symbol=full_symbol,
             order_reason=_ORDER_REASON[sig.side],
+            extra_metadata=dict(sig.metadata),
         )
 
     def _size_scale_out(
@@ -273,6 +275,7 @@ class SizePositionsPhase(StrategyPhase):
             quote_amount=amount * price,
             full_symbol=full_symbol,
             order_reason=_ORDER_REASON[sig.side],
+            extra_metadata=dict(sig.metadata),
         )
 
     def _size_close_short(
@@ -300,6 +303,7 @@ class SizePositionsPhase(StrategyPhase):
             quote_amount=cover_amount * price,
             full_symbol=full_symbol,
             order_reason=_ORDER_REASON[sig.side],
+            extra_metadata=dict(sig.metadata),
         )
 
     # ---- top-N ranking -------------------------------------------- #

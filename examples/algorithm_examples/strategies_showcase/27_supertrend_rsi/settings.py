@@ -1,0 +1,11 @@
+"""账户运行的统一资金口径；选股、单标的和组合入口共同使用。"""
+
+CAPITAL = 25_000.0
+ORDER_BUDGET = 4_500.0
+MAX_POSITIONS = 5
+RISK_FRACTION = 0.005
+TOTAL_RISK_FRACTION = 0.025
+
+# 仅供 2026-11 的归档实验复现原始参数。当前策略按可负担整股数下单。
+ARCHIVED_MIN_ENTRY_SHARES = 10
+MIN_ENTRY_SHARES = ARCHIVED_MIN_ENTRY_SHARES  # 兼容已归档的脚本导入

@@ -1,0 +1,33 @@
+[Unit]
+Description=Supertrend RSI account runner (%i)
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=600
+StartLimitBurst=5
+
+[Service]
+Type=exec
+User=iaf
+Group=iaf
+WorkingDirectory="@PROJECT_ROOT@"
+EnvironmentFile=/etc/iaf-supertrend/%i.env
+ExecStartPre="@PROJECT_ROOT@/.venv/bin/python" "@PROJECT_ROOT@/examples/algorithm_examples/strategies_showcase/27_supertrend_rsi/deploy/ubuntu24/authorize.py" --env-file /etc/iaf-supertrend/%i.env --check-cache
+ExecStart="@PROJECT_ROOT@/.venv/bin/python" "@PROJECT_ROOT@/examples/algorithm_examples/strategies_showcase/27_supertrend_rsi/portfolio_app.py" --mode %i --directory /var/lib/iaf-supertrend/%i/account --universe /var/lib/iaf-supertrend/%i/selection/universe.json --iterations 0
+StateDirectory=iaf-supertrend
+StateDirectoryMode=0700
+Restart=on-failure
+RestartSec=15
+KillSignal=SIGINT
+TimeoutStopSec=90
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+CPUAccounting=true
+MemoryAccounting=true
+MemoryHigh=384M
+MemoryMax=640M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target

@@ -9,9 +9,31 @@ from investing_algorithm_framework import TradingStrategy, DataSource, \
     DataType, MarketCredential, PortfolioConfiguration, \
     DataProvider, Schedule, TimeUnit
 from investing_algorithm_framework.app.eventloop import EventLoopService
+from investing_algorithm_framework.domain import INDEX_DATETIME
 from investing_algorithm_framework.services import \
     BacktestTradeOrderEvaluator
 from tests.resources import TestBase
+
+
+class TestBoundedLiveLoop(TestCase):
+    def test_only_waits_between_requested_ticks_with_or_without_progress(self):
+        for count in (1, 3):
+            for progress in (False, True):
+                with self.subTest(count=count, progress=progress):
+                    config = Mock(config={INDEX_DATETIME: datetime.now(timezone.utc)})
+                    loop = EventLoopService(
+                        context=Mock(), order_service=Mock(), trade_service=Mock(),
+                        portfolio_service=Mock(), configuration_service=config,
+                        data_provider_service=Mock(), portfolio_snapshot_service=Mock(),
+                    )
+                    events = []
+                    loop._run_iteration = lambda **kwargs: events.append("tick")
+                    with patch("investing_algorithm_framework.app.eventloop.sleep",
+                               side_effect=lambda seconds: events.append(seconds)), \
+                            patch("investing_algorithm_framework.app.eventloop.tqdm",
+                                  side_effect=lambda items, **kwargs: items):
+                        loop.start(number_of_iterations=count, show_progress=progress)
+                    self.assertEqual(events, ["tick", 1] * (count - 1) + ["tick"])
 
 
 class TestNativeScheduledLoop(TestCase):
