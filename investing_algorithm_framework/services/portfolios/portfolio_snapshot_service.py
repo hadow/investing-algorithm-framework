@@ -103,6 +103,9 @@ class PortfolioSnapshotService(RepositoryService):
         for position in \
                 self.position_repository.get_all({"portfolio": portfolio.id}):
 
+            # 已清仓记录仍留在账本；零数量不参与估值，也不应要求继续订阅行情。
+            if position.get_amount() == 0:
+                continue
             if position.get_symbol() != portfolio.get_trading_symbol():
                 symbol_pair = f"{position.get_symbol()}/" \
                     f"{portfolio.get_trading_symbol()}"

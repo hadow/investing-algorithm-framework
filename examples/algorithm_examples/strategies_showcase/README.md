@@ -42,6 +42,7 @@ possible and what would be needed to make it possible.
 | 06 | [funding_rate_carry](./06_funding_rate_carry) | 🟡 | Carry pattern shown, but no native perp/funding-rate data provider. |
 | 07 | [event_driven_signal](./07_event_driven_signal) | ✅ | Volatility-breakout entry on bar-close events. |
 | 08 | [dca_accumulation](./08_dca_accumulation) | ✅ | Scheduled fixed-size buys (dollar-cost averaging). |
+| 27 | [supertrend_rsi](./27_supertrend_rsi) | ✅ | Alorse Pine signals, CSV research, daily stock selection and shared Longbridge portfolio risk. |
 
 ### 2. Portfolio construction strategies
 

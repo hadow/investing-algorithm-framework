@@ -1154,15 +1154,18 @@ class Context:
         allocated = 0.0
 
         for position in positions:
-
-            if position.symbol != portfolio.trading_symbol:
-                ticker = self.data_provider_service.get_ticker_data(
-                    symbol=f"{position.symbol}/{portfolio.trading_symbol}",
-                    market=portfolio.market,
-                    date=date
-                )
-                if ticker is not None and "bid" in ticker:
-                    allocated += position.get_amount() * ticker["bid"]
+            if position.symbol == portfolio.trading_symbol:
+                continue
+            amount = position.get_amount()
+            if amount == 0:
+                continue
+            ticker = self.data_provider_service.get_ticker_data(
+                symbol=f"{position.symbol}/{portfolio.trading_symbol}",
+                market=portfolio.market,
+                date=date
+            )
+            if ticker is not None and "bid" in ticker:
+                allocated += amount * ticker["bid"]
 
         portfolio.allocated = allocated
         return portfolio
@@ -1283,9 +1286,10 @@ class Context:
             local_value = 0.0
 
             for position in positions:
+                amount = position.get_amount()
                 if position.symbol == trading_symbol:
-                    local_value += position.get_amount()
-                else:
+                    local_value += amount
+                elif amount != 0:
                     ticker = self.data_provider_service.get_ticker_data(
                         symbol=(
                             f"{position.symbol}/{trading_symbol}"
@@ -1295,9 +1299,7 @@ class Context:
                     )
 
                     if ticker is not None and "bid" in ticker:
-                        local_value += (
-                            position.get_amount() * ticker["bid"]
-                        )
+                        local_value += amount * ticker["bid"]
 
             # Convert to base currency if configured
             if (
@@ -2086,6 +2088,9 @@ class Context:
             for position in positions:
                 if portfolio.trading_symbol == position.symbol:
                     continue
+                amount = position.get_amount()
+                if amount == 0:
+                    continue
 
                 symbol = f"{position.symbol.upper()}/" \
                          f"{portfolio.trading_symbol.upper()}"
@@ -2093,8 +2098,7 @@ class Context:
                 ticker = self.data_provider_service.get_ticker_data(
                     symbol=symbol, market=portfolio.market, date=current_date
                 )
-                allocated = allocated + \
-                    (position.get_amount() * ticker["bid"])
+                allocated += amount * ticker["bid"]
 
         return allocated
 

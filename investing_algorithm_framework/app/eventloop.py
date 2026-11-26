@@ -808,33 +808,10 @@ class EventLoopService:
                     if self._stop_event.wait(1):
                         break
             else:
-
+                iterations = range(number_of_iterations)
                 if show_progress:
-                    for _ in tqdm(
-                        range(number_of_iterations),
-                        colour="GREEN"
-                    ):
-                        try:
-                            config = self._configuration_service.config
-                            current_time = config[INDEX_DATETIME]
-                            strategies = self._get_due_strategies(current_time)
-                            tasks = self._get_due_tasks(current_time)
-                            sf_calls = \
-                                self._get_due_scheduled_functions(current_time)
-                            self._run_iteration(
-                                strategies=strategies,
-                                tasks=tasks,
-                                scheduled_function_calls=sf_calls,
-                            )
-                            current_time = datetime.now(timezone.utc)
-                            self._configuration_service.add_value(
-                                INDEX_DATETIME, current_time
-                            )
-                            sleep(1)
-                        except KeyboardInterrupt:
-                            exit(0)
-
-                for _ in range(number_of_iterations):
+                    iterations = tqdm(iterations, colour="GREEN")
+                for index in iterations:
                     try:
                         config = self._configuration_service.config
                         current_time = config[INDEX_DATETIME]
@@ -851,7 +828,8 @@ class EventLoopService:
                         self._configuration_service.add_value(
                             INDEX_DATETIME, current_time
                         )
-                        sleep(1)
+                        if index + 1 < number_of_iterations:
+                            sleep(1)
                     except KeyboardInterrupt:
                         exit(0)
 

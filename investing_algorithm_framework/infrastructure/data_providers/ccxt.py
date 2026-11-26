@@ -165,7 +165,9 @@ class CCXTOHLCVDataProvider(DataProvider):
         # Check if ccxt has an exchange for the given market
         try:
             market = market.lower()
-            exchange_class = getattr(ccxt, market)
+            exchange_class = getattr(ccxt, market, None)
+            if exchange_class is None:
+                return False
             exchange = exchange_class()
             symbols = exchange.load_markets()
             symbols = list(symbols.keys())

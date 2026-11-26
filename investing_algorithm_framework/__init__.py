@@ -81,6 +81,18 @@ from .infrastructure import AzureBlobStorageStateHandler, \
     AlphaVantageOHLCVDataProvider, PolygonOHLCVDataProvider, \
     AWSS3StorageStateHandler
 from .create_app import create_app
+from .infrastructure.longbridge import (
+    LongbridgeClient, LongbridgeOAuthCredential,
+)
+from .infrastructure.data_providers.longbridge import (
+    LongbridgeOHLCVDataProvider, LongbridgeTickerDataProvider,
+)
+from .infrastructure.order_executors.longbridge_order_executor import (
+    LongbridgeOrderExecutor,
+)
+from .infrastructure.portfolio_providers.longbridge_portfolio_provider import (
+    LongbridgePortfolioProvider,
+)
 from .cli.index_command import build_index, rank_index, format_table, \
     prune_backtests, promote_backtests
 from .domain.backtesting.bundle import remove_study_from_bundle
@@ -286,7 +298,9 @@ __all__ = [
     'CSVTickerDataProvider',
     'CSVURLDataProvider', 'JSONURLDataProvider',
     'ParquetURLDataProvider', "CCXTOHLCVDataProvider",
-    "CCXTTickerDataProvider",
+    "CCXTTickerDataProvider", "LongbridgeClient", "LongbridgeOAuthCredential",
+    "LongbridgeOHLCVDataProvider", "LongbridgeTickerDataProvider",
+    "LongbridgeOrderExecutor", "LongbridgePortfolioProvider",
     "OHLCVDataProviderBase",
     "YahooOHLCVDataProvider",
     "AlphaVantageOHLCVDataProvider",

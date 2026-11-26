@@ -1,0 +1,2 @@
+# Run from this example directory.
+-e ../../../..[longbridge]
